@@ -1,12 +1,15 @@
-import { useColorScheme } from "@/presentation/hooks/use-color-scheme";
-import PermissionsCheckerProvider from "@/presentation/providers/PermissionsCheckerProvider";
+//import { useColorScheme } from "@/presentation/hooks/use-color-scheme";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+
+import { useColorScheme } from "@/presentation/hooks/use-color-scheme";
+import PermissionsCheckerProvider from "@/presentation/providers/PermissionsCheckerProvider";
+
 import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+
 import "react-native-reanimated";
 
 export const unstable_settings = {
@@ -28,8 +31,6 @@ export default function RootLayout() {
           />
         </Stack>
       </PermissionsCheckerProvider>
-
-      <StatusBar style="auto" />
     </ThemeProvider>
   );
 }
