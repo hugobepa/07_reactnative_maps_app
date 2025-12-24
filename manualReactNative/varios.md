@@ -76,3 +76,5 @@ https://react.dev/reference/react/createContext
 https://react.dev/learn/passing-data-deeply-with-context
 
 https://docs.expo.dev/versions/latest/sdk/location/
+
+https://zustand.docs.pmnd.rs/getting-started/introduction
