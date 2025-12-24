@@ -9,7 +9,7 @@ interface PermissionState {
   locationStatus: PermissionStatus;
 
   requestLocationPermission: () => Promise<PermissionStatus>;
-  checktLocationPermission: () => Promise<PermissionStatus>;
+  checkLocationPermission: () => Promise<PermissionStatus>;
 }
 
 export const usePermissionStore = create<PermissionState>()((set) => ({
@@ -22,7 +22,7 @@ export const usePermissionStore = create<PermissionState>()((set) => ({
 
     return status;
   },
-  checktLocationPermission: async () => {
+  checkLocationPermission: async () => {
     const status = await checktLocationPermission();
 
     set({ locationStatus: status });
