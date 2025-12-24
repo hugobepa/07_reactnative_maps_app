@@ -1,6 +1,7 @@
 import { PermissionStatus } from "@/infrastructure/interfaces/location";
 import { router } from "expo-router";
 import React, { PropsWithChildren, useEffect } from "react";
+import { AppState } from "react-native";
 import { usePermissionStore } from "../store/usePermissions";
 
 const PermissionsCheckerProvider = ({ children }: PropsWithChildren) => {
@@ -18,8 +19,16 @@ const PermissionsCheckerProvider = ({ children }: PropsWithChildren) => {
     checkLocationPermission();
   }, []);
 
-  //TODO:
-  //estar pendiente cuando el estado app cambia
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (nextAppState === "active") {
+        checkLocationPermission();
+      }
+      return () => {
+        subscription.remove();
+      };
+    });
+  }, []);
 
   return <>{children}</>;
 };
