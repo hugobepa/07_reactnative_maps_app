@@ -82,3 +82,6 @@ https://github.com/react-native-maps/react-native-maps
 https://docs.expo.dev/versions/latest/sdk/map-view/
 
 https://zustand.docs.pmnd.rs/getting-started/introduction
+
+#permisos
+https://console.cloud.google.com/apis
