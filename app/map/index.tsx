@@ -1,10 +1,20 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import MapView from "react-native-maps";
 
 const MapScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.map} />
+      <MapView
+        //showsPointsOfInterest={false}
+        style={styles.map}
+        initialRegion={{
+          latitude: 41.38,
+          longitude: 2.15,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
     </View>
   );
 };
