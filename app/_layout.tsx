@@ -10,6 +10,8 @@ import PermissionsCheckerProvider from "@/presentation/providers/PermissionsChec
 
 import { Stack } from "expo-router";
 
+import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 
 export const unstable_settings = {
@@ -20,17 +22,22 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <PermissionsCheckerProvider>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="loading/index" options={{ animation: "none" }} />
-          <Stack.Screen name="map/index" options={{ animation: "fade" }} />
-          <Stack.Screen
-            name="permissions/index"
-            options={{ animation: "fade" }}
-          />
-        </Stack>
-      </PermissionsCheckerProvider>
-    </ThemeProvider>
+    <GestureHandlerRootView>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <PermissionsCheckerProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="loading/index"
+              options={{ animation: "none" }}
+            />
+            <Stack.Screen name="map/index" options={{ animation: "fade" }} />
+            <Stack.Screen
+              name="permissions/index"
+              options={{ animation: "fade" }}
+            />
+          </Stack>
+        </PermissionsCheckerProvider>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
