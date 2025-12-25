@@ -20,6 +20,10 @@ copiar de la pagina de google cluod credenciales barralateral y pegar despues de
 keytool -list -v -keystore C:\Users\username\.android\debug.keystore
 -alias androiddebugkey -storepass android -keypass android
 
+desde terminal consola:
+
+" keytool -genkey -v -keystore C:\Users\User\.android\debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 "
+
 copiar comnando generar clave SHA1 en googlecloud
 
 1. ir barra navegadora arriba/izq (nombre de un proyecto) selecionar

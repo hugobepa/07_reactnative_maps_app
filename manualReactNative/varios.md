@@ -79,7 +79,6 @@ https://react.dev/learn/passing-data-deeply-with-context
 https://docs.expo.dev/versions/latest/sdk/location/
 https://docs.expo.dev/versions/latest/sdk/map-view/
 https://github.com/react-native-maps/react-native-maps
-https://docs.expo.dev/versions/latest/sdk/map-view/
 
 https://zustand.docs.pmnd.rs/getting-started/introduction
 

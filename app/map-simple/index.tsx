@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 const MapScreen = () => {
   return (
@@ -15,7 +15,19 @@ const MapScreen = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      >
+        <Marker
+          coordinate={{ latitude: 41.38, longitude: 2.15 }}
+          title="Aqui estoy"
+          description="esta es mi casa"
+        />
+
+        <Marker
+          coordinate={{ latitude: 41.415, longitude: 2.1955 }}
+          title="Aqui estoy"
+          description="esta es mi casa"
+        />
+      </MapView>
     </View>
   );
 };
