@@ -24,3 +24,7 @@ sino se actualiza:
 r
 
 --------------------
+
+extends button no funciona en 
+android studio---customize--all settings
+Settings --> Tools --> Emulator --> uncheck "Launch in a tool window -apply

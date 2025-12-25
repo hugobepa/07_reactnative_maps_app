@@ -1,16 +1,28 @@
 import CustomMap from "@/presentation/components/shared/maps/CustomMap";
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import { useLocationStore } from "@/presentation/store/useLocationStore";
+import React, { useEffect } from "react";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 const MapScreen = () => {
+  const { lastKnownLocation, getLocation } = useLocationStore();
+
+  useEffect(() => {
+    if (lastKnownLocation === null) {
+      getLocation();
+    }
+  }, []);
+
+  if (lastKnownLocation === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <CustomMap
-        initialLocation={{
-          latitude: 41.38,
-          longitude: 2.15,
-        }}
-      />
+      <CustomMap initialLocation={lastKnownLocation} />
       {/* <MapView
         //showsPointsOfInterest={false}
         provider={PROVIDER_GOOGLE}
