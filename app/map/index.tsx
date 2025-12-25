@@ -1,11 +1,17 @@
+import CustomMap from "@/presentation/components/shared/maps/CustomMap";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 const MapScreen = () => {
   return (
     <View style={styles.container}>
-      <MapView
+      <CustomMap
+        initialLocation={{
+          latitude: 41.38,
+          longitude: 2.15,
+        }}
+      />
+      {/* <MapView
         //showsPointsOfInterest={false}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
@@ -15,7 +21,7 @@ const MapScreen = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      /> */}
     </View>
   );
 };
