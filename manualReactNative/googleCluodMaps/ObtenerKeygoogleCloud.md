@@ -39,12 +39,14 @@ copiar comnando generar clave SHA1 en googlecloud
    claves y credenciales
    !!informacion-si las borras (arriba) -- arriba todo( crear credenciales---claves api)!!!
    clave (hamburguesa)--editar clave
-   restringuir uso
-   ---Apps para android
-   --copiar nombre de parquete de "app.json"
-   --copiar sha1
-   --listo
-   --guardar
+
+   - restringuir uso
+
+   - Apps para android
+   - copiar nombre de parquete de "app.json"
+   - copiar sha1
+   - listo
+   - guardar
 
    mostrar clave y copiarla
 
