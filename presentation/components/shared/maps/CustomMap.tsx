@@ -1,6 +1,6 @@
 import { LatLng } from "@/infrastructure/interfaces/lat-lng";
 import { useLocationStore } from "@/presentation/store/useLocationStore";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, ViewProps } from "react-native";
 import MapView from "react-native-maps";
 import FAB from "../FAB";
@@ -16,7 +16,8 @@ const CustomMap = ({
   ...rest
 }: Props) => {
   const mapRef = useRef<MapView>(null);
-  const { watchLocation, clearWatchLocation, lastKnownLocation } =
+  const [isFollowingUser, setIsFollowingUser] = useState(true);
+  const { watchLocation, clearWatchLocation, lastKnownLocation, getLocation } =
     useLocationStore();
 
   useEffect(() => {
@@ -28,15 +29,28 @@ const CustomMap = ({
   }, []);
 
   useEffect(() => {
-    if (lastKnownLocation) {
+    if (lastKnownLocation && isFollowingUser) {
       moveCameraToLocation(lastKnownLocation);
     }
-  }, [lastKnownLocation]);
+  }, [lastKnownLocation, isFollowingUser]);
 
   const moveCameraToLocation = (latLng: LatLng) => {
     if (!mapRef.current) return;
 
     mapRef.current.animateCamera({ center: latLng });
+  };
+
+  const moveToCurrentLocation = async () => {
+    if (!lastKnownLocation) {
+      moveCameraToLocation(initialLocation);
+    } else {
+      moveCameraToLocation(lastKnownLocation);
+    }
+
+    const location = await getLocation();
+    if (!location) return;
+
+    moveCameraToLocation(location);
   };
 
   return (
@@ -45,6 +59,7 @@ const CustomMap = ({
         ref={mapRef}
         showsPointsOfInterest={false}
         //provider={PROVIDER_GOOGLE}
+        onTouchStart={() => setIsFollowingUser(false)}
         showsUserLocation={showUserLocation}
         style={styles.map}
         initialRegion={{
@@ -56,10 +71,19 @@ const CustomMap = ({
       />
 
       <FAB
-        iconName="airplane-outline"
-        onPress={() => {}}
+        iconName={isFollowingUser ? "walk-outline" : "accessibility-outline"}
+        onPress={moveToCurrentLocation}
         style={{
           bottom: 20,
+          right: 20,
+        }}
+      />
+
+      <FAB
+        iconName="compass-outline"
+        onPress={() => setIsFollowingUser(!isFollowingUser)}
+        style={{
+          bottom: 80,
           right: 20,
         }}
       />
